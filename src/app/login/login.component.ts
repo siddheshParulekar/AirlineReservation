@@ -21,8 +21,13 @@ export class LoginComponent implements OnInit {
     console.log("hello")
     this._service.loginUserFromRemote(this.user).subscribe(
       data => {
-        console.log("response recieved");
-        this._router.navigate(['/loginsuccess'])
+        if(this.user.email == "admin@gmail.com" && this.user.pass == "admin"){
+          this._router.navigate(["/adminsuccess"]);
+         }else{
+          console.log("response recieved");
+        this._router.navigate(['/loginsuccess']) }
+        
+        
       } ,
       error => 
       {
